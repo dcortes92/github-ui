@@ -1,0 +1,76 @@
+{
+  "dependencies": {
+    "axios": "0.19.0",
+    "dc-utils": "1.2.1",
+    "font-awesome": "4.7.0",
+    "prop-types": "15.7.2",
+    "query-string": "6.8.3",
+    "react": "16.10.2",
+    "react-dom": "16.10.2",
+    "react-js-pagination": "3.0.0",
+    "react-router-dom": "5.1.2",
+    "react-select": "3.0.8",
+    "susy": "3.0.5"
+  },
+  "name": "github-client",
+  "description": "Web client that communicates with Github's REST API",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/core": "7.6.4",
+    "@babel/polyfill": "7.6.0",
+    "@babel/preset-env": "7.6.3",
+    "@babel/preset-react": "7.6.3",
+    "@babel/register": "7.6.2",
+    "babel-loader": "8.0.6",
+    "css-loader": "3.2.0",
+    "cz-conventional-changelog": "3.0.2",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.15.1",
+    "esm": "3.2.25",
+    "file-loader": "4.2.0",
+    "html-webpack-plugin": "3.2.0",
+    "jsdom": "6.5.1",
+    "mini-css-extract-plugin": "0.8.0",
+    "nightmare": "3.0.2",
+    "node-sass": "4.12.0",
+    "riteway": "6.1.0",
+    "sass-loader": "8.0.0",
+    "tap-nirvana": "1.1.0",
+    "webpack": "4.41.2",
+    "webpack-cli": "3.3.9",
+    "webpack-dev-server": "3.8.2"
+  },
+  "scripts": {
+    "build": "webpack --mode production",
+    "commit": "git-cz",
+    "start": "webpack-dev-server --mode development --open",
+    "test:unit": "node -r @babel/register -r @babel/polyfill test/unit/ | tap-nirvana",
+    "test:integration": "node -r @babel/register -r @babel/polyfill test/integration/ | tap-nirvana",
+    "test:e2e": "node -r @babel/register -r @babel/polyfill test/e2e/ | tap-nirvana",
+    "test": "npm run-script test:unit && npm run-script test:integration && npm run-script test:e2e"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dcortes92/github-client.git"
+  },
+  "keywords": [
+    "github",
+    "client",
+    "javascript",
+    "react",
+    "rest",
+    "api"
+  ],
+  "author": "Daniel Cortes <daniel@daniel.cr> (http://daniel.cr/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dcortes92/github-client/issues"
+  },
+  "homepage": "https://github.com/dcortes92/github-client#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
