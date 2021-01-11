@@ -5,7 +5,7 @@ import Nightmare from 'nightmare';
 describe('Search and Branches e2e tests', async assert => {
   const show = true;
   {
-    const nightmare = Nightmare({show, });
+    const nightmare = Nightmare({show});
     nightmare
       .goto(E2E_URL)
       .click('.react-datepicker__input-container input')
@@ -14,6 +14,7 @@ describe('Search and Branches e2e tests', async assert => {
       .wait(500)
       .click('.FormSearchRepos button[type="submit"]')
       .wait('.Table')
+      .screenshot('./e2e_with_results.png')
       .evaluate(() => document.querySelector('.Table #name').innerText)
       .end()
       .then(content => {
@@ -34,6 +35,7 @@ describe('Search and Branches e2e tests', async assert => {
       .wait(500)
       .click('.FormSearchRepos button[type="submit"]')
       .wait('.Repos p')
+      .screenshot('./e2e_no_results.png')
       .evaluate(() => document.querySelector('.Repos p').innerText)
       .end()
       .then(content => {
@@ -57,6 +59,7 @@ describe('Search and Branches e2e tests', async assert => {
       .click('.FormSearchRepos button[type="submit"]')
       .wait('.Table')
       .click('Table .fa.fa-star-o')
+      .screenshot('./e2e_starred_repo.png')
       .evaluate(() => document.querySelector('.Table .fa.fa-star').title)
       .end()
       .then(content => {
