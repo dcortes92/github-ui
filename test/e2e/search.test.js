@@ -34,9 +34,9 @@ describe('Search and Branches e2e tests', async assert => {
       .type('.FormSearchRepos input[type="text"]', 'ashfkjashfkasdf')
       .wait(500)
       .click('.FormSearchRepos button[type="submit"]')
-      .wait('.Repos p')
+      .wait('.Alert-message')
       .screenshot('./e2e_no_results.png')
-      .evaluate(() => document.querySelector('.Repos p').innerText)
+      .evaluate(() => document.querySelector('.Alert-message').innerText)
       .end()
       .then(content => {
         assert({

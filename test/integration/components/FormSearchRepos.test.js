@@ -8,7 +8,7 @@ describe('FormSearchRepos component tests', async assert => {
   {
     const document = createDOM();
     const $ = enzyme.mount(
-      <FormSearchRepos onSubmit={() => {}} />,
+      <FormSearchRepos onSubmit={() => {}} onDateChange={() => {}} />,
       {attachTo: document.getElementById('root')}
     );
     const actual = $.find('.FormSearchRepos').length;
@@ -25,7 +25,7 @@ describe('FormSearchRepos component tests', async assert => {
   {
     const document = createDOM();
     const $ = enzyme.mount(
-      <FormSearchRepos onSubmit={() => {}} loading={true}/>,
+      <FormSearchRepos onSubmit={() => {}} onDateChange={() => {}} loading={true}/>,
       {attachTo: document.getElementById('root')}
     );
     const actual = $.find('.fa.fa-spinner').length;
@@ -42,11 +42,10 @@ describe('FormSearchRepos component tests', async assert => {
   {
     const document = createDOM();
     const $ = enzyme.mount(
-      <FormSearchRepos onSubmit={() => {}} />,
+      <FormSearchRepos onSubmit={() => {}} onDateChange={() => {}} selectedDate={null} />,
       {attachTo: document.getElementById('root')}
     );
 
-    $.find('.react-datepicker__input-container input').simulate('change', {target: {value: ''}});
     $.find('form').simulate('submit');
     const actual = $.find('button[type="submit"]').getDOMNode().disabled;
     const expected = true;
@@ -61,6 +60,25 @@ describe('FormSearchRepos component tests', async assert => {
 
   {
     const document = createDOM();
+    const expected = new Date('01/01/2021');
+    const onDateChange = date => {
+      assert({
+        given: 'a date change in the form',
+        should: 'call the `onDateChange` handler',
+        actual: date,
+        expected: expected
+      });
+    };
+    const $ = enzyme.mount(
+      <FormSearchRepos onSubmit={() => {}} onDateChange={onDateChange} />,
+      {attachTo: document.getElementById('root')}
+    );
+    $.find('.react-datepicker__input-container input').simulate('change', {target: {value: '01/01/2021'}});
+    $.detach();
+  }
+
+  {
+    const document = createDOM();
     const onSubmit = data => {
       assert({
         given: 'a form submission',
@@ -70,7 +88,7 @@ describe('FormSearchRepos component tests', async assert => {
       })
     };
     const $ = enzyme.mount(
-      <FormSearchRepos onSubmit={() => onSubmit('submitted')} />,
+      <FormSearchRepos onSubmit={() => onSubmit('submitted')} onDateChange={() => {}} />,
       {attachTo: document.getElementById('root')}
     );
     $.find('form').simulate('submit');
