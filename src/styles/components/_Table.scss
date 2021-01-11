@@ -1,0 +1,81 @@
+.Table {
+  border-collapse: collapse;
+  width: 100%;
+
+  .Table-body .Table-cell,
+  .Table-header .Table-cell {
+    padding: 12px 10px;
+    text-align: center;
+
+    .fa {
+      cursor: pointer;
+    }
+  }
+
+  .Table-body .Table-cell:first-child,
+  .Table-header .Table-cell:first-child {
+    text-align: left;
+    padding-left: 0;
+  }
+
+  .Table-body {
+    font-size: 13px;
+    font-weight: 100;
+  }
+
+  .Table-header {
+    font-size: 12px;
+    border-bottom: 1px solid #ddd;
+    text-transform: uppercase;
+  }
+}
+
+/*
+* Responsive table styles adapted from https://codepen.io/AllThingsSmitty/pen/MyqmdM
+*/
+@media screen and (max-width: 600px) {
+  .Table {
+    border: 0;
+  }
+  
+  .Table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  .Table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  .Table .Table-body .Table-cell,
+  .Table .Table-header .Table-cell,
+  .Table .Table-body .Table-cell:first-child,
+  .Table .Table-header .Table-cell:first-child {
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: 14px;
+    text-align: right;
+    padding: 12px 10px;
+  }
+  
+  .Table .Table-body .Table-cell::before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 13px;
+  }
+  
+  .Table td:last-child {
+    border-bottom: 0;
+  }
+}

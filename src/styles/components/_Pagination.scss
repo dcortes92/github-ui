@@ -1,0 +1,67 @@
+.Pagination {
+  @include clearfix;
+  position: relative;
+
+  .Pagination-range {
+    @include span(4);
+    position: absolute;
+
+    .Select {
+      width: 50%;
+    }
+  }
+
+  .Pagination-items {
+    @include span(12);
+    text-align: center;
+
+    > ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    > ul > li {
+      display: inline-block;
+    }
+
+    > ul > li.disabled > a {
+      color: #ccc;
+      cursor: default;
+    }
+
+    > ul > li.disabled:hover {
+      cursor: default;
+    }
+
+    > ul > li.active > a {
+      background-color: #007bff;
+      color: #fff;
+    }
+
+    > ul > li > a {
+      padding: 6px 12px;
+      text-decoration: none;
+      color: #007bff;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .Pagination {
+    .Pagination-range,
+    .Pagination-items {
+      position: relative;
+      width: 100%;
+      float: none;
+      margin: 0;
+    }
+
+    .Pagination-range .Select {
+      width: 100%;
+    }
+
+    .Pagination-items > ul {
+      text-align: center;
+    }
+  }
+}

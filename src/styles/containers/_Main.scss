@@ -1,0 +1,31 @@
+.Main {
+  @include clearfix;
+  
+  padding-left: 15px;
+  padding-right: 15px;
+
+  .Form {
+    margin-bottom: 15px;
+  }
+
+  .Table,
+  .Pagination {
+    margin-top: 15px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .Main .Form {
+    button[type="submit"] {
+      margin: 10px 0;
+    }
+  }
+
+  .Main .Select {
+    margin-bottom: 10px;
+  }
+
+  .Main .Table {
+    margin-top: 0;
+  }
+}

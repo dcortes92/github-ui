@@ -1,0 +1,48 @@
+.Form {
+  label {
+    display: inline-block;
+  }
+
+  input[type="text"] {
+    font-size: 16px;
+    color: #495057;
+
+    border-color: #ccc;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 1px;
+
+    padding: 10px 5px;
+  }
+
+  button[type="submit"] {
+    font-size: 13px;
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+
+    padding: 10px 5px;
+    margin-left: 10px;
+
+    text-align: center;
+    width: 60px;
+
+    cursor: pointer;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .Form {
+    label,
+    input[type="text"],
+    button[type="submit"] {
+      display: block;
+      width: 100%;
+    }
+
+    button[type="submit"] {
+      margin: 0;
+    }
+  }
+}
