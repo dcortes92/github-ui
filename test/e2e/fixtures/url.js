@@ -1,0 +1,1 @@
+export const E2E_URL = 'https://affectionate-poincare-b5f9c5.netlify.app/';
