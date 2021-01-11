@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import Select from 'react-select';
+import dc from 'dc-utils';
 import {getRepositories} from '../ajax/github';
 import {FormSearchRepos} from '../components/forms/FormSearchRepos';
+import {Alert} from '../components/Alert';
 import {Table} from '../components/Table';
 import {Pagination} from '../components/Pagination';
 import {isPaginationHidden} from '../utils/pagination';
 import {animatedSelect} from '../utils/select';
-import { formatDate } from '../utils/date';
 
 export const Main = () => {
   const [date, setDate] = useState(new Date());
@@ -169,6 +170,10 @@ export const Main = () => {
     }
   }
 
+  const handleDateChange = date => {
+    setDate(date);
+  }
+
   /**
    * Utility functions
    */
@@ -248,10 +253,10 @@ export const Main = () => {
 
   const renderActionControls = repos => {
     if(repos && repos.length) {
-      const filterOptions = getReposLanguageFilterOptions(repos);
+      const filterOptions = getReposLanguageFilterOptions(repos).sort(dc.by('value'));
       return (
         <div className="clearfix">
-          <div className="span span-4">
+          <div className="span span-3">
             <Select
               closeMenuOnSelect={true}
               components={animatedSelect}
@@ -297,7 +302,7 @@ export const Main = () => {
         </div>
       )
     } else if(submitted) {
-      return <p>No results found</p>
+      return <Alert message="No results found"/>;
     } else {
       return '';
     }
@@ -308,8 +313,9 @@ export const Main = () => {
       <h2 className="text-center">GitHub Client</h2>
       <FormSearchRepos
         onSubmit={handleFormSearchReposSubmit}
+        onDateChange={handleDateChange}
         loading={loadingRepos}
-        startDate={date}
+        selectedDate={date}
       />
       <div className="Repos">
         {renderRepos(submitted, repos, reposFiltered, activePage, activeRange, totalElements)}

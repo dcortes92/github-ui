@@ -1,28 +1,26 @@
-import React, {useState} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 
 export const FormSearchRepos = props => {
-  const [startDate, setStartDate] = useState(new Date());
-
   const handleSubmit = event => {
     event.preventDefault();
     const {onSubmit} = props;
-    if(startDate) {
-      onSubmit(startDate)
+    if(selectedDate) {
+      onSubmit(selectedDate)
     }
   }
 
-  const {loading} = props;
+  const {loading, selectedDate, onDateChange} = props;
 
   return (
     <form onSubmit={handleSubmit} className="Form FormSearchRepos">
       <h4>Popular Repositores</h4>
       <label>
         Date:&nbsp;
-        <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+        <DatePicker selected={selectedDate} onChange={onDateChange} />
       </label>
-      <button type="submit" disabled={startDate === null}>
+      <button type="submit" disabled={selectedDate === null}>
         {loading ? (
           <span>
             <i className="fa fa-spinner fa-spin" aria-hidden="true" title="Getting repositories"></i>
@@ -37,6 +35,7 @@ export const FormSearchRepos = props => {
 
 FormSearchRepos.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  startDate: PropTypes.object,
+  onDateChange: PropTypes.func.isRequired,
+  selectedDate: PropTypes.object,
   loading: PropTypes.bool
 }
