@@ -53,7 +53,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dcortes92/github-client.git"
+    "url": "git+https://github.com/dcortes92/github-ui.git"
   },
   "keywords": [
     "github",
@@ -66,9 +66,9 @@
   "author": "Daniel Cortes <daniel@daniel.cr> (http://daniel.cr/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dcortes92/github-client/issues"
+    "url": "https://github.com/dcortes92/github-ui/issues"
   },
-  "homepage": "https://github.com/dcortes92/github-client#readme",
+  "homepage": "https://github.com/dcortes92/github-ui#readme",
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
