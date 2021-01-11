@@ -2,7 +2,7 @@ import {describe} from 'riteway';
 import {E2E_URL} from './fixtures/url';
 import Nightmare from 'nightmare';
 
-describe('Search and Branches e2e tests', async assert => {
+describe('Repository search e2e tests', async assert => {
   const show = true;
   {
     const nightmare = Nightmare({show});
